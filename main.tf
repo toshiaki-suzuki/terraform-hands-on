@@ -36,14 +36,14 @@ module "security-group" {
       to_port     = 80
       protocol    = "tcp"
       description = "allow-http-80-myoffice"
-      cidr_blocks = "xx.xx.xx.xx/32" // MyIP
+      cidr_blocks = "${var.myIp}" // MyIP
     },
     {
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
       description = "allow-ssh-22-myoffice"
-      cidr_blocks = "xx.xx.xx.xx/32" // MyIP
+      cidr_blocks = "${var.myIp}" // MyIP
     }
   ]
   egress_with_cidr_blocks = [
@@ -63,7 +63,7 @@ resource "tls_private_key" "keygen" {
 }
 
 # AWS のキーペアを作成する
-module "sample_key_pair" {
+module "key_pair" {
   source = "terraform-aws-modules/key-pair/aws"
 
   key_name   = "test-key"
