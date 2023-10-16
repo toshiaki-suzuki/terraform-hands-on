@@ -21,14 +21,14 @@ module "security-group" {
       to_port     = 80
       protocol    = "tcp"
       description = "allow-http-80-myoffice"
-      cidr_blocks = "${var.myIp}" // MyIP
+      cidr_blocks = var.myIp // MyIP
     },
     {
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
       description = "allow-ssh-22-myoffice"
-      cidr_blocks = "${var.myIp}" // MyIP
+      cidr_blocks = var.myIp // MyIP
     }
   ]
   egress_with_cidr_blocks = [
