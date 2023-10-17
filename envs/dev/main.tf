@@ -1,15 +1,15 @@
 module "vpc" {
-  source  = "./modules"
+  source  = "../../modules/vpc"
 }
 
 module "sg" {
-  source  = "./modules"
+  source  = "../../modules/sg"
 }
 
 module "keypair" {
-  source  = "./modules"
+  source  = "../../modules/keypair"
 }
 
 module "ec2" {
-  source  = "./modules"
+  source  = "../../modules/ec2"
 }
