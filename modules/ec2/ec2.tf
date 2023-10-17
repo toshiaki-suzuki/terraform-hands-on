@@ -12,10 +12,10 @@ module "ec2-instance" {
 
   ami                    = data.aws_ssm_parameter.amzn2_ami_latest.value
   instance_type          = "t2.micro"
-  key_name               = module.key_pair.key_pair_name
+  key_name               = var.key_name
   monitoring             = true
-  vpc_security_group_ids = [module.security-group.security_group_id]
-  subnet_id              = module.vpc.public_subnets[0]
+  vpc_security_group_ids = [var.vpc_security_group_ids]
+  subnet_id              = var.subnet_id
   associate_public_ip_address = true
 
   user_data = <<EOF

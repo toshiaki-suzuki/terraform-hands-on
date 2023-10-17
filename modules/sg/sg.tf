@@ -4,7 +4,7 @@ module "security-group" {
 
   name        = "web-server"
   description = "Security group for web-server with HTTP ports open within VPC"
-  vpc_id      = module.vpc.vpc_id
+  vpc_id      = var.vpc_id
 
   ingress_cidr_blocks      = ["10.10.0.0/16"]
   ingress_rules            = ["https-443-tcp"]
@@ -14,7 +14,7 @@ module "security-group" {
       to_port     = 80
       protocol    = "tcp"
       description = "allow-http-80-ownvpc"
-      cidr_blocks = module.vpc.vpc_cidr_block
+      cidr_blocks = var.vpc_cidr_blocks
     },
     {
       from_port   = 80
